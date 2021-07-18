@@ -24,10 +24,11 @@ COPY --from=cardano-node /usr/local/bin/cardano-node /usr/local/bin/cardano-node
 
 # Init ATADA scripts
 COPY atada /root/atada/
-RUN /root/atada/mainnet/init-mainnet.sh
-ENV PATH /home/cardano/scripts/cardano/mainnet:$PATH
+RUN /root/atada/init-mainnet.sh
 
+WORKDIR /root
 RUN git clone --depth 1 https://github.com/gitmachtl/scripts.git
+ENV PATH /root/scripts/cardano/mainnet:$PATH
 
 WORKDIR /data/cardano-address
 RUN curl -L https://github.com/input-output-hk/cardano-addresses/releases/download/3.5.0/cardano-addresses-3.5.0-linux64.tar.gz | \

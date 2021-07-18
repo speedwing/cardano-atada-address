@@ -26,7 +26,13 @@ Once we find out what the ip is, we can launch socat host side.
 
 ## Launch ATADA container
 
+```bash
 ./run-atada-scripts.sh
+```
 
 ### Launch Socat client side
+
+```bash
+./launch-socat-client <ip_address_here>
+```
 

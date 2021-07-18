@@ -21,5 +21,5 @@ ifconfig -a
 Once we find out what the ip is, we can launch socat host side.
 
 ```bash
-
+./launch-socat-client.sh
 ```

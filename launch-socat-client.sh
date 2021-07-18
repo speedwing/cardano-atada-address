@@ -1,5 +1,10 @@
 #!/usr/bin/env bash
 
+if [ $# -eq 0 ]; then
+    echo "No IP address supplied"
+    exit 1
+fi
+
 mkdir -p /root/cardano-node || exit 0
 
-socat UNIX-LISTEN:/root/cardano-node/cardano-node.socket,fork TCP:192.168.0.20:11111,ignoreeof &
+socat UNIX-LISTEN:/root/cardano-node/cardano-node.socket,fork TCP:$1:11111,ignoreeof &

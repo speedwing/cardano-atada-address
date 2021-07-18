@@ -37,6 +37,8 @@ COPY *.sh /root
 
 RUN mv /data/cardano-address/cardano-address /usr/local/bin/cardano-address
 
+ENV CARDANO_NODE_SOCKET_PATH /root/cardano-node/cardano-node.socket
+
 WORKDIR /root
 
 ENTRYPOINT ["bash", "-c"]

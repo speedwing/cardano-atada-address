@@ -13,11 +13,11 @@ cardano-address key child 1852H/1815H/0H/0/0 < root.xsk | cardano-address key pu
 
 cardano-address key child 1852H/1815H/0H/2/0 < root.xsk | cardano-address key public --with-chain-code > stake.xvk
 
-cardano-address address payment --network-tag testnet < addr.xvk > many.payment.addr
+cardano-address address payment --network-tag mainnet < addr.xvk > many.payment.addr
 
 cardano-address address delegation $(cat stake.xvk) < many.payment.addr > payment-delegated.addr
 
-cardano-address address stake --network-tag testnet < stake.xvk > many.stake.addr
+cardano-address address stake --network-tag mainnet < stake.xvk > many.stake.addr
 
 cardano-cli key convert-cardano-address-key --shelley-payment-key --signing-key-file root.xsk --out-file many.payment.skey
 cardano-cli key verification-key --signing-key-file many.payment.skey --verification-key-file many.payment.vkey

@@ -1,4 +1,4 @@
-ARG CARDANO_VERSION="1.27.0"
+ARG CARDANO_VERSION="1.30.1"
 ARG OS_ARCH
 
 FROM speedwing/cardano-node:${CARDANO_VERSION}-${OS_ARCH} as cardano-node

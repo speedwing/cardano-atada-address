@@ -32,6 +32,7 @@ COPY atada /root/atada/
 RUN /root/atada/init-mainnet.sh
 COPY *.sh /root
 
+RUN mkdir /db
 ENV CARDANO_NODE_SOCKET_PATH /db/node.socket
 
 WORKDIR /root

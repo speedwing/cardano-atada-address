@@ -2,21 +2,19 @@
 
 set -x
 
-OS_ARCH=$(uname -m)
-NODE_VERSION="1.30.1"
-IMAGE_TAG="${NODE_VERSION}-${OS_ARCH}"
+NODE_VERSION="1.31.0"
 
 NETWORK=mainnet
 CARDANO_NODE_PORT=3000
 
-DB_FOLDER=/Users/MEKES01/tmp/db
-#DB_FOLDER=/Users/giovanni/.cardano/cardano-mainnet
+#DB_FOLDER=/Users/MEKES01/tmp/db
+DB_FOLDER=/Users/giovanni/.cardano/cardano-mainnet
 
-docker run -d --rm \
+docker run -it --rm \
     --name cardano-node-mainnet \
     -v ${DB_FOLDER}:/db \
     -v `pwd`/phrase.prv:/root/phrase.prv \
-    "atada-scripts:${IMAGE_TAG}" \
+    "atada-scripts:${NODE_VERSION}" \
     "cardano-node run \
     --topology /etc/config/${NETWORK}-topology.json \
     --database-path /db \

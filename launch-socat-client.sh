@@ -7,4 +7,4 @@ fi
 
 mkdir -p /root/cardano-node || exit 0
 
-socat UNIX-LISTEN:/root/cardano-node/cardano-node.socket,fork TCP:$1:11111,ignoreeof &
+socat UNIX-LISTEN:/db/node.socket,fork TCP:$1:11111,ignoreeof &

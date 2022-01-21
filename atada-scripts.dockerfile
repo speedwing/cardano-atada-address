@@ -27,6 +27,11 @@ RUN curl -L https://github.com/vacuumlabs/cardano-hw-cli/releases/download/v1.9.
     tar xzv -C /data/cardano-hw-cli && \
     cp /data/cardano-hw-cli/cardano-hw-cli/cardano-hw-cli /usr/local/bin/
 
+WORKDIR /data/token-metadata-creator
+RUN curl -L https://github.com/input-output-hk/offchain-metadata-tools/releases/download/v0.3.0.0/token-metadata-creator.tar.gz | \
+    tar xzv -C /data/token-metadata-creator && \
+    cp /data/token-metadata-creator/token-metadata-creator /usr/local/bin/
+
 # Init ATADA scripts
 COPY atada /root/atada/
 RUN /root/atada/init-mainnet.sh

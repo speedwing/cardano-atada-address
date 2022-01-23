@@ -1,3 +1,19 @@
+FROM ubuntu:20.04 as libsodium
+
+ENV DEBIAN_FRONTEND=noninteractive
+
+RUN apt-get update \
+    && apt-get upgrade -y \
+    && apt-get install -y automake build-essential pkg-config libffi-dev libgmp-dev libssl-dev libtinfo-dev libsystemd-dev \
+    zlib1g-dev make g++ tmux git jq curl libncursesw5 libtool autoconf llvm libnuma-dev
+
+# Install Libsodium
+WORKDIR /build/libsodium
+RUN git clone https://github.com/input-output-hk/libsodium
+RUN cd libsodium && \
+    git checkout 66f017f1 && \
+    ./autogen.sh && ./configure && make && make install
+
 FROM ubuntu:20.04
 
 RUN apt-get update && \
@@ -31,6 +47,12 @@ WORKDIR /data/token-metadata-creator
 RUN curl -L https://github.com/input-output-hk/offchain-metadata-tools/releases/download/v0.3.0.0/token-metadata-creator.tar.gz | \
     tar xzv -C /data/token-metadata-creator && \
     cp /data/token-metadata-creator/token-metadata-creator /usr/local/bin/
+
+# Adding ENV vars so
+ENV LD_LIBRARY_PATH="/usr/local/lib"
+ENV PKG_CONFIG_PATH="/usr/local/lib/pkgconfig"
+
+COPY --from=libsodium /usr/local/lib /usr/local/lib
 
 # Init ATADA scripts
 COPY atada /root/atada/

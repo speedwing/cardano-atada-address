@@ -31,7 +31,7 @@ RUN curl -L https://github.com/input-output-hk/cardano-addresses/releases/downlo
     mv /data/cardano-address/cardano-address /usr/local/bin/cardano-address
 
 WORKDIR /data/cardano-node
-RUN curl -L https://hydra.iohk.io/build/17428010/download/1/cardano-node-1.35.3-linux.tar.gz | \
+RUN curl -L https://update-cardano-mainnet.iohk.io/cardano-node-releases/cardano-node-1.35.4-linux.tar.gz | \
     tar xzv -C /data/cardano-node && \
     cp /data/cardano-node/cardano-node /usr/local/bin/ && \
     cp /data/cardano-node/cardano-cli /usr/local/bin/ && \

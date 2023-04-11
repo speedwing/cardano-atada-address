@@ -39,7 +39,7 @@ RUN curl -L https://update-cardano-mainnet.iohk.io/cardano-node-releases/cardano
     cp -r /data/cardano-node/configuration/cardano/* /etc/config/
 
 WORKDIR /data/cardano-hw-cli
-RUN curl -L https://github.com/vacuumlabs/cardano-hw-cli/releases/download/v1.9.1/cardano-hw-cli-1.9.1_linux-x64.tar.gz | \
+RUN curl -L https://github.com/vacuumlabs/cardano-hw-cli/releases/download/v1.12.0/cardano-hw-cli-1.12.0_linux-x64.tar.gz | \
     tar xzv -C /data/cardano-hw-cli && \
     cp /data/cardano-hw-cli/cardano-hw-cli/cardano-hw-cli /usr/local/bin/
 
